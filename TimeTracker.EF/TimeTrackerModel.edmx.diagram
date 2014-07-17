@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="afb397150d3949ffb49d3cea1eec59e2" Name="Diagram1" >
+        <EntityTypeShape EntityType="TimeTrackerModel.Addresses" Width="1.5" PointX="1" PointY="0.625" />
+        <EntityTypeShape EntityType="TimeTrackerModel.Agencies" Width="1.5" PointX="3.75" PointY="0.625" />
+        <EntityTypeShape EntityType="TimeTrackerModel.Companies" Width="1.5" PointX="6" PointY="2.375" />
+        <AssociationConnector Association="TimeTrackerModel.AddressesAgencies" />
+        <AssociationConnector Association="TimeTrackerModel.AddressesCompanies" />
+        <EntityTypeShape EntityType="TimeTrackerModel.Consultants" Width="1.5" PointX="8.125" PointY="0.5" />
+        <AssociationConnector Association="TimeTrackerModel.AgenciesConsultants" />
+        <EntityTypeShape EntityType="TimeTrackerModel.Engagements" Width="1.5" PointX="10.75" PointY="1.875" />
+        <EntityTypeShape EntityType="TimeTrackerModel.People" Width="1.5" PointX="8.5" PointY="3.375" />
+        <AssociationConnector Association="TimeTrackerModel.CompaniesPeople" />
+        <AssociationConnector Association="TimeTrackerModel.AgenciesEngagements" />
+        <AssociationConnector Association="TimeTrackerModel.ConsultantsEngagements" />
+        <AssociationConnector Association="TimeTrackerModel.CompaniesEngagements" />
+        <AssociationConnector Association="TimeTrackerModel.AddressesEngagements" />
+        <AssociationConnector Association="TimeTrackerModel.PeopleEngagements" />
+        <EntityTypeShape EntityType="TimeTrackerModel.Projects" Width="1.5" PointX="10.5" PointY="6.875" />
+        <AssociationConnector Association="TimeTrackerModel.PeopleProjects" />
+        <AssociationConnector Association="TimeTrackerModel.EngagementsProjects" />
+        <EntityTypeShape EntityType="TimeTrackerModel.Tasks" Width="1.5" PointX="8.125" PointY="8.375" />
+        <AssociationConnector Association="TimeTrackerModel.ProjectsTasks" />
+        <EntityTypeShape EntityType="TimeTrackerModel.Log" Width="1.5" PointX="5" PointY="7.625" />
+        <AssociationConnector Association="TimeTrackerModel.TasksLog" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

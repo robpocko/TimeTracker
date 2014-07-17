@@ -1,0 +1,193 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7827C9B5-7CCA-4F0F-AD92-076D4F0E0641}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TimeTracker.GUI</RootNamespace>
+    <AssemblyName>TimeTracker.GUI</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AgencyConsultants.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AgencyConsultants.Designer.cs">
+      <DependentUpon>AgencyConsultants.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AgencyView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AgencyView.Designer.cs">
+      <DependentUpon>AgencyView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CompanyPeople.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CompanyPeople.Designer.cs">
+      <DependentUpon>CompanyPeople.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CompanyView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CompanyView.Designer.cs">
+      <DependentUpon>CompanyView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\Extensions.cs" />
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewEngagementWizard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewEngagementWizard.Designer.cs">
+      <DependentUpon>NewEngagementWizard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestIt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TestIt.Designer.cs">
+      <DependentUpon>TestIt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TrackerDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TrackerDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\PersonDetails.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\PersonDetails.Designer.cs">
+      <DependentUpon>PersonDetails.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="AgencyConsultants.resx">
+      <DependentUpon>AgencyConsultants.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AgencyView.resx">
+      <DependentUpon>AgencyView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CompanyPeople.resx">
+      <DependentUpon>CompanyPeople.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CompanyView.resx">
+      <DependentUpon>CompanyView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewEngagementWizard.resx">
+      <DependentUpon>NewEngagementWizard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="TestIt.resx">
+      <DependentUpon>TestIt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\PersonDetails.resx">
+      <DependentUpon>PersonDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\TimeTracker.EF.Addresses.datasource" />
+    <None Include="Properties\DataSources\TimeTracker.EF.Agencies.datasource" />
+    <None Include="Properties\DataSources\TimeTracker.EF.Companies.datasource" />
+    <None Include="Properties\DataSources\TimeTracker.EF.Consultants.datasource" />
+    <None Include="Properties\DataSources\TimeTracker.EF.Engagements.datasource" />
+    <None Include="Properties\DataSources\TimeTracker.EF.Log.datasource" />
+    <None Include="Properties\DataSources\TimeTracker.EF.People.datasource" />
+    <None Include="Properties\DataSources\TimeTracker.EF.Projects.datasource" />
+    <None Include="Properties\DataSources\TimeTracker.EF.Tasks.datasource" />
+    <None Include="Properties\DataSources\TimeTracker.EF.TimeTrackerModelContainer.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="TrackerDataSet.xsc">
+      <DependentUpon>TrackerDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="TrackerDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>TrackerDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="TrackerDataSet.xss">
+      <DependentUpon>TrackerDataSet.xsd</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TimeTracker.EF\TimeTracker.EF.csproj">
+      <Project>{a7c00923-efd0-4908-8f85-dcc39181f55d}</Project>
+      <Name>TimeTracker.EF</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

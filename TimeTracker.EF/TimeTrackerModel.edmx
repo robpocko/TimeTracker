@@ -1,0 +1,796 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="TimeTrackerModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="TimeTrackerModelStoreContainer">
+    <EntitySet Name="Addresses" EntityType="TimeTrackerModel.Store.Addresses" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Agencies" EntityType="TimeTrackerModel.Store.Agencies" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Companies" EntityType="TimeTrackerModel.Store.Companies" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Consultants" EntityType="TimeTrackerModel.Store.Consultants" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Engagements" EntityType="TimeTrackerModel.Store.Engagements" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="People" EntityType="TimeTrackerModel.Store.People" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Projects" EntityType="TimeTrackerModel.Store.Projects" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Tasks" EntityType="TimeTrackerModel.Store.Tasks" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Logs" EntityType="TimeTrackerModel.Store.Logs" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="AddressesAgencies" Association="TimeTrackerModel.Store.AddressesAgencies">
+      <End Role="Addresses" EntitySet="Addresses" />
+      <End Role="Agencies" EntitySet="Agencies" />
+    </AssociationSet>
+    <AssociationSet Name="AddressesCompanies" Association="TimeTrackerModel.Store.AddressesCompanies">
+      <End Role="Addresses" EntitySet="Addresses" />
+      <End Role="Companies" EntitySet="Companies" />
+    </AssociationSet>
+    <AssociationSet Name="AgenciesConsultants" Association="TimeTrackerModel.Store.AgenciesConsultants">
+      <End Role="Agencies" EntitySet="Agencies" />
+      <End Role="Consultants" EntitySet="Consultants" />
+    </AssociationSet>
+    <AssociationSet Name="CompaniesPeople" Association="TimeTrackerModel.Store.CompaniesPeople">
+      <End Role="Companies" EntitySet="Companies" />
+      <End Role="People" EntitySet="People" />
+    </AssociationSet>
+    <AssociationSet Name="AgenciesEngagements" Association="TimeTrackerModel.Store.AgenciesEngagements">
+      <End Role="Agencies" EntitySet="Agencies" />
+      <End Role="Engagements" EntitySet="Engagements" />
+    </AssociationSet>
+    <AssociationSet Name="ConsultantsEngagements" Association="TimeTrackerModel.Store.ConsultantsEngagements">
+      <End Role="Consultants" EntitySet="Consultants" />
+      <End Role="Engagements" EntitySet="Engagements" />
+    </AssociationSet>
+    <AssociationSet Name="CompaniesEngagements" Association="TimeTrackerModel.Store.CompaniesEngagements">
+      <End Role="Companies" EntitySet="Companies" />
+      <End Role="Engagements" EntitySet="Engagements" />
+    </AssociationSet>
+    <AssociationSet Name="AddressesEngagements" Association="TimeTrackerModel.Store.AddressesEngagements">
+      <End Role="Addresses" EntitySet="Addresses" />
+      <End Role="Engagements" EntitySet="Engagements" />
+    </AssociationSet>
+    <AssociationSet Name="PeopleEngagements" Association="TimeTrackerModel.Store.PeopleEngagements">
+      <End Role="People" EntitySet="People" />
+      <End Role="Engagements" EntitySet="Engagements" />
+    </AssociationSet>
+    <AssociationSet Name="PeopleProjects" Association="TimeTrackerModel.Store.PeopleProjects">
+      <End Role="People" EntitySet="People" />
+      <End Role="Projects" EntitySet="Projects" />
+    </AssociationSet>
+    <AssociationSet Name="EngagementsProjects" Association="TimeTrackerModel.Store.EngagementsProjects">
+      <End Role="Engagements" EntitySet="Engagements" />
+      <End Role="Projects" EntitySet="Projects" />
+    </AssociationSet>
+    <AssociationSet Name="ProjectsTasks" Association="TimeTrackerModel.Store.ProjectsTasks">
+      <End Role="Projects" EntitySet="Projects" />
+      <End Role="Tasks" EntitySet="Tasks" />
+    </AssociationSet>
+    <AssociationSet Name="TasksLog" Association="TimeTrackerModel.Store.TasksLog">
+      <End Role="Tasks" EntitySet="Tasks" />
+      <End Role="Log" EntitySet="Logs" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Addresses">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Street1" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="Street2" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="Street3" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="Suburb" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="StateID" Type="int" Nullable="false" />
+    <Property Name="Postcode" Type="nvarchar" Nullable="false" MaxLength="4" />
+  </EntityType>
+  <EntityType Name="Agencies">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="PhoneNumber" Type="nvarchar" Nullable="false" MaxLength="12" />
+    <Property Name="Address_Id" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Companies">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="Address_Id" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Consultants">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" Nullable="false" MaxLength="30" />
+    <Property Name="LastName" Type="nvarchar" Nullable="false" MaxLength="30" />
+    <Property Name="PhoneNumber" Type="nvarchar" Nullable="false" MaxLength="12" />
+    <Property Name="Email" Type="nvarchar" Nullable="false" MaxLength="200" />
+    <Property Name="AgenciesId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Engagements">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Commencement" Type="datetime" Nullable="false" />
+    <Property Name="Completion" Type="datetime" Nullable="true" />
+    <Property Name="AgenciesId" Type="int" Nullable="false" />
+    <Property Name="ConsultantsId" Type="int" Nullable="false" />
+    <Property Name="CompaniesId" Type="int" Nullable="false" />
+    <Property Name="AddressesId" Type="int" Nullable="false" />
+    <Property Name="PeopleId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="People">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" Nullable="false" MaxLength="30" />
+    <Property Name="LastName" Type="nvarchar" Nullable="false" MaxLength="30" />
+    <Property Name="PhoneNumber" Type="nvarchar" Nullable="false" MaxLength="12" />
+    <Property Name="Email" Type="nvarchar" Nullable="false" MaxLength="200" />
+    <Property Name="CompaniesId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Projects">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="PeopleId" Type="int" Nullable="false" />
+    <Property Name="EngagementsId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tasks">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="ProjectsId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Logs">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LogDate" Type="datetime" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" Nullable="false" MaxLength="200" />
+    <Property Name="StartTime" Type="datetime" Nullable="false" />
+    <Property Name="EndTime" Type="datetime" Nullable="true" />
+    <Property Name="TasksId" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="AddressesAgencies">
+    <End Role="Addresses" Type="TimeTrackerModel.Store.Addresses" Multiplicity="0..1" />
+    <End Role="Agencies" Type="TimeTrackerModel.Store.Agencies" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Addresses">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Agencies">
+        <PropertyRef Name="Address_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AddressesCompanies">
+    <End Role="Addresses" Type="TimeTrackerModel.Store.Addresses" Multiplicity="0..1" />
+    <End Role="Companies" Type="TimeTrackerModel.Store.Companies" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Addresses">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Companies">
+        <PropertyRef Name="Address_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AgenciesConsultants">
+    <End Role="Agencies" Type="TimeTrackerModel.Store.Agencies" Multiplicity="1" />
+    <End Role="Consultants" Type="TimeTrackerModel.Store.Consultants" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Agencies">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Consultants">
+        <PropertyRef Name="AgenciesId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CompaniesPeople">
+    <End Role="Companies" Type="TimeTrackerModel.Store.Companies" Multiplicity="1" />
+    <End Role="People" Type="TimeTrackerModel.Store.People" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Companies">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="People">
+        <PropertyRef Name="CompaniesId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AgenciesEngagements">
+    <End Role="Agencies" Type="TimeTrackerModel.Store.Agencies" Multiplicity="1" />
+    <End Role="Engagements" Type="TimeTrackerModel.Store.Engagements" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Agencies">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Engagements">
+        <PropertyRef Name="AgenciesId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ConsultantsEngagements">
+    <End Role="Consultants" Type="TimeTrackerModel.Store.Consultants" Multiplicity="1" />
+    <End Role="Engagements" Type="TimeTrackerModel.Store.Engagements" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Consultants">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Engagements">
+        <PropertyRef Name="ConsultantsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CompaniesEngagements">
+    <End Role="Companies" Type="TimeTrackerModel.Store.Companies" Multiplicity="1" />
+    <End Role="Engagements" Type="TimeTrackerModel.Store.Engagements" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Companies">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Engagements">
+        <PropertyRef Name="CompaniesId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AddressesEngagements">
+    <End Role="Addresses" Type="TimeTrackerModel.Store.Addresses" Multiplicity="1" />
+    <End Role="Engagements" Type="TimeTrackerModel.Store.Engagements" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Addresses">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Engagements">
+        <PropertyRef Name="AddressesId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PeopleEngagements">
+    <End Role="People" Type="TimeTrackerModel.Store.People" Multiplicity="1" />
+    <End Role="Engagements" Type="TimeTrackerModel.Store.Engagements" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="People">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Engagements">
+        <PropertyRef Name="PeopleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PeopleProjects">
+    <End Role="People" Type="TimeTrackerModel.Store.People" Multiplicity="1" />
+    <End Role="Projects" Type="TimeTrackerModel.Store.Projects" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="People">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Projects">
+        <PropertyRef Name="PeopleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="EngagementsProjects">
+    <End Role="Engagements" Type="TimeTrackerModel.Store.Engagements" Multiplicity="1" />
+    <End Role="Projects" Type="TimeTrackerModel.Store.Projects" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Engagements">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Projects">
+        <PropertyRef Name="EngagementsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProjectsTasks">
+    <End Role="Projects" Type="TimeTrackerModel.Store.Projects" Multiplicity="1" />
+    <End Role="Tasks" Type="TimeTrackerModel.Store.Tasks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Projects">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Tasks">
+        <PropertyRef Name="ProjectsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TasksLog">
+    <End Role="Tasks" Type="TimeTrackerModel.Store.Tasks" Multiplicity="1" />
+    <End Role="Log" Type="TimeTrackerModel.Store.Logs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tasks">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Log">
+        <PropertyRef Name="TasksId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="TimeTrackerModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="TimeTrackerModelContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Addresses" EntityType="TimeTrackerModel.Addresses" />
+          <EntitySet Name="Agencies" EntityType="TimeTrackerModel.Agencies" />
+          <EntitySet Name="Companies" EntityType="TimeTrackerModel.Companies" />
+          <AssociationSet Name="AddressesAgencies" Association="TimeTrackerModel.AddressesAgencies">
+            <End Role="Addresses" EntitySet="Addresses" />
+            <End Role="Agencies" EntitySet="Agencies" />
+          </AssociationSet>
+          <AssociationSet Name="AddressesCompanies" Association="TimeTrackerModel.AddressesCompanies">
+            <End Role="Addresses" EntitySet="Addresses" />
+            <End Role="Companies" EntitySet="Companies" />
+          </AssociationSet>
+          <EntitySet Name="Consultants" EntityType="TimeTrackerModel.Consultants" />
+          <AssociationSet Name="AgenciesConsultants" Association="TimeTrackerModel.AgenciesConsultants">
+            <End Role="Agencies" EntitySet="Agencies" />
+            <End Role="Consultants" EntitySet="Consultants" />
+          </AssociationSet>
+          <EntitySet Name="Engagements" EntityType="TimeTrackerModel.Engagements" />
+          <EntitySet Name="People" EntityType="TimeTrackerModel.People" />
+          <AssociationSet Name="CompaniesPeople" Association="TimeTrackerModel.CompaniesPeople">
+            <End Role="Companies" EntitySet="Companies" />
+            <End Role="People" EntitySet="People" />
+          </AssociationSet>
+          <AssociationSet Name="AgenciesEngagements" Association="TimeTrackerModel.AgenciesEngagements">
+            <End Role="Agencies" EntitySet="Agencies" />
+            <End Role="Engagements" EntitySet="Engagements" />
+          </AssociationSet>
+          <AssociationSet Name="ConsultantsEngagements" Association="TimeTrackerModel.ConsultantsEngagements">
+            <End Role="Consultants" EntitySet="Consultants" />
+            <End Role="Engagements" EntitySet="Engagements" />
+          </AssociationSet>
+          <AssociationSet Name="CompaniesEngagements" Association="TimeTrackerModel.CompaniesEngagements">
+            <End Role="Companies" EntitySet="Companies" />
+            <End Role="Engagements" EntitySet="Engagements" />
+          </AssociationSet>
+          <AssociationSet Name="AddressesEngagements" Association="TimeTrackerModel.AddressesEngagements">
+            <End Role="Addresses" EntitySet="Addresses" />
+            <End Role="Engagements" EntitySet="Engagements" />
+          </AssociationSet>
+          <AssociationSet Name="PeopleEngagements" Association="TimeTrackerModel.PeopleEngagements">
+            <End Role="People" EntitySet="People" />
+            <End Role="Engagements" EntitySet="Engagements" />
+          </AssociationSet>
+          <EntitySet Name="Projects" EntityType="TimeTrackerModel.Projects" />
+          <AssociationSet Name="PeopleProjects" Association="TimeTrackerModel.PeopleProjects">
+            <End Role="People" EntitySet="People" />
+            <End Role="Projects" EntitySet="Projects" />
+          </AssociationSet>
+          <AssociationSet Name="EngagementsProjects" Association="TimeTrackerModel.EngagementsProjects">
+            <End Role="Engagements" EntitySet="Engagements" />
+            <End Role="Projects" EntitySet="Projects" />
+          </AssociationSet>
+          <EntitySet Name="Tasks" EntityType="TimeTrackerModel.Tasks" />
+          <AssociationSet Name="ProjectsTasks" Association="TimeTrackerModel.ProjectsTasks">
+            <End Role="Projects" EntitySet="Projects" />
+            <End Role="Tasks" EntitySet="Tasks" />
+          </AssociationSet>
+          <EntitySet Name="Logs" EntityType="TimeTrackerModel.Log" />
+          <AssociationSet Name="TasksLog" Association="TimeTrackerModel.TasksLog">
+            <End Role="Tasks" EntitySet="Tasks" />
+            <End Role="Log" EntitySet="Logs" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Addresses">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Street1" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="Street2" Type="String" Nullable="true" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="Street3" Type="String" Nullable="true" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="Suburb" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="StateID" Type="TimeTrackerModel.StateName" Nullable="false" />
+          <Property Name="Postcode" Type="String" Nullable="false" MaxLength="4" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Agency" Relationship="TimeTrackerModel.AddressesAgencies" FromRole="Addresses" ToRole="Agencies" />
+          <NavigationProperty Name="Company" Relationship="TimeTrackerModel.AddressesCompanies" FromRole="Addresses" ToRole="Companies" />
+          <NavigationProperty Name="Engagements" Relationship="TimeTrackerModel.AddressesEngagements" FromRole="Addresses" ToRole="Engagements" />
+        </EntityType>
+        <EnumType Name="StateName">
+          <Member Name="Victoria" Value="1" />
+          <Member Name="NewSouthWales" Value="2" />
+          <Member Name="Queensland" Value="3" />
+          <Member Name="SouthAustralia" Value="4" />
+          <Member Name="Tasmania" Value="5" />
+          <Member Name="ACT" Value="6" />
+        </EnumType>
+        <EntityType Name="Agencies">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="PhoneNumber" Type="String" Nullable="false" MaxLength="12" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Address" Relationship="TimeTrackerModel.AddressesAgencies" FromRole="Agencies" ToRole="Addresses" />
+          <NavigationProperty Name="Consultants" Relationship="TimeTrackerModel.AgenciesConsultants" FromRole="Agencies" ToRole="Consultants" />
+          <NavigationProperty Name="Engagements" Relationship="TimeTrackerModel.AgenciesEngagements" FromRole="Agencies" ToRole="Engagements" />
+        </EntityType>
+        <EntityType Name="Companies">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Address" Relationship="TimeTrackerModel.AddressesCompanies" FromRole="Companies" ToRole="Addresses" />
+          <NavigationProperty Name="People" Relationship="TimeTrackerModel.CompaniesPeople" FromRole="Companies" ToRole="People" />
+          <NavigationProperty Name="Engagements" Relationship="TimeTrackerModel.CompaniesEngagements" FromRole="Companies" ToRole="Engagements" />
+        </EntityType>
+        <Association Name="AddressesAgencies">
+          <End Type="TimeTrackerModel.Addresses" Role="Addresses" Multiplicity="0..1" />
+          <End Type="TimeTrackerModel.Agencies" Role="Agencies" Multiplicity="0..1" />
+        </Association>
+        <Association Name="AddressesCompanies">
+          <End Type="TimeTrackerModel.Addresses" Role="Addresses" Multiplicity="0..1" />
+          <End Type="TimeTrackerModel.Companies" Role="Companies" Multiplicity="0..1" />
+        </Association>
+        <EntityType Name="Consultants">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="PhoneNumber" Type="String" Nullable="false" MaxLength="12" Unicode="true" FixedLength="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Agency" Relationship="TimeTrackerModel.AgenciesConsultants" FromRole="Consultants" ToRole="Agencies" />
+          <Property Name="AgenciesId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Engagements" Relationship="TimeTrackerModel.ConsultantsEngagements" FromRole="Consultants" ToRole="Engagements" />
+        </EntityType>
+        <Association Name="AgenciesConsultants">
+          <End Type="TimeTrackerModel.Agencies" Role="Agencies" Multiplicity="1" />
+          <End Type="TimeTrackerModel.Consultants" Role="Consultants" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Agencies">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Consultants">
+              <PropertyRef Name="AgenciesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Engagements">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Commencement" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Completion" Type="DateTime" Nullable="true" Precision="3" />
+          <NavigationProperty Name="Agency" Relationship="TimeTrackerModel.AgenciesEngagements" FromRole="Engagements" ToRole="Agencies" />
+          <Property Name="AgenciesId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Consultant" Relationship="TimeTrackerModel.ConsultantsEngagements" FromRole="Engagements" ToRole="Consultants" />
+          <Property Name="ConsultantsId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Company" Relationship="TimeTrackerModel.CompaniesEngagements" FromRole="Engagements" ToRole="Companies" />
+          <Property Name="CompaniesId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Address" Relationship="TimeTrackerModel.AddressesEngagements" FromRole="Engagements" ToRole="Addresses" />
+          <Property Name="AddressesId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Person" Relationship="TimeTrackerModel.PeopleEngagements" FromRole="Engagements" ToRole="People" />
+          <Property Name="PeopleId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Projects" Relationship="TimeTrackerModel.EngagementsProjects" FromRole="Engagements" ToRole="Projects" />
+        </EntityType>
+        <EntityType Name="People">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="PhoneNumber" Type="String" Nullable="false" MaxLength="12" Unicode="true" FixedLength="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Company" Relationship="TimeTrackerModel.CompaniesPeople" FromRole="People" ToRole="Companies" />
+          <Property Name="CompaniesId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Engagements" Relationship="TimeTrackerModel.PeopleEngagements" FromRole="People" ToRole="Engagements" />
+          <NavigationProperty Name="Projects" Relationship="TimeTrackerModel.PeopleProjects" FromRole="People" ToRole="Projects" />
+        </EntityType>
+        <Association Name="CompaniesPeople">
+          <End Type="TimeTrackerModel.Companies" Role="Companies" Multiplicity="1" />
+          <End Type="TimeTrackerModel.People" Role="People" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Companies">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="People">
+              <PropertyRef Name="CompaniesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AgenciesEngagements">
+          <End Type="TimeTrackerModel.Agencies" Role="Agencies" Multiplicity="1" />
+          <End Type="TimeTrackerModel.Engagements" Role="Engagements" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Agencies">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Engagements">
+              <PropertyRef Name="AgenciesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ConsultantsEngagements">
+          <End Type="TimeTrackerModel.Consultants" Role="Consultants" Multiplicity="1" />
+          <End Type="TimeTrackerModel.Engagements" Role="Engagements" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Consultants">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Engagements">
+              <PropertyRef Name="ConsultantsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CompaniesEngagements">
+          <End Type="TimeTrackerModel.Companies" Role="Companies" Multiplicity="1" />
+          <End Type="TimeTrackerModel.Engagements" Role="Engagements" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Companies">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Engagements">
+              <PropertyRef Name="CompaniesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AddressesEngagements">
+          <End Type="TimeTrackerModel.Addresses" Role="Addresses" Multiplicity="1" />
+          <End Type="TimeTrackerModel.Engagements" Role="Engagements" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Addresses">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Engagements">
+              <PropertyRef Name="AddressesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PeopleEngagements">
+          <End Type="TimeTrackerModel.People" Role="People" Multiplicity="1" />
+          <End Type="TimeTrackerModel.Engagements" Role="Engagements" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="People">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Engagements">
+              <PropertyRef Name="PeopleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Projects">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Person" Relationship="TimeTrackerModel.PeopleProjects" FromRole="Projects" ToRole="People" />
+          <Property Name="PeopleId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Engagement" Relationship="TimeTrackerModel.EngagementsProjects" FromRole="Projects" ToRole="Engagements" />
+          <Property Name="EngagementsId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Tasks" Relationship="TimeTrackerModel.ProjectsTasks" FromRole="Projects" ToRole="Tasks" />
+        </EntityType>
+        <Association Name="PeopleProjects">
+          <End Type="TimeTrackerModel.People" Role="People" Multiplicity="1" />
+          <End Type="TimeTrackerModel.Projects" Role="Projects" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="People">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Projects">
+              <PropertyRef Name="PeopleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="EngagementsProjects">
+          <End Type="TimeTrackerModel.Engagements" Role="Engagements" Multiplicity="1" />
+          <End Type="TimeTrackerModel.Projects" Role="Projects" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Engagements">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Projects">
+              <PropertyRef Name="EngagementsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Tasks">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Project" Relationship="TimeTrackerModel.ProjectsTasks" FromRole="Tasks" ToRole="Projects" />
+          <Property Name="ProjectsId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Logs" Relationship="TimeTrackerModel.TasksLog" FromRole="Tasks" ToRole="Log" />
+        </EntityType>
+        <Association Name="ProjectsTasks">
+          <End Type="TimeTrackerModel.Projects" Role="Projects" Multiplicity="1" />
+          <End Type="TimeTrackerModel.Tasks" Role="Tasks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projects">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Tasks">
+              <PropertyRef Name="ProjectsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Log">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LogDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="StartTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EndTime" Type="DateTime" Nullable="true" Precision="3" />
+          <NavigationProperty Name="Task" Relationship="TimeTrackerModel.TasksLog" FromRole="Log" ToRole="Tasks" />
+          <Property Name="TasksId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="TasksLog">
+          <End Type="TimeTrackerModel.Tasks" Role="Tasks" Multiplicity="1" />
+          <End Type="TimeTrackerModel.Log" Role="Log" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tasks">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Log">
+              <PropertyRef Name="TasksId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TimeTrackerModelStoreContainer" CdmEntityContainer="TimeTrackerModelContainer">
+    <EntitySetMapping Name="Addresses">
+      <EntityTypeMapping TypeName="IsTypeOf(TimeTrackerModel.Addresses)">
+        <MappingFragment StoreEntitySet="Addresses">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Street1" ColumnName="Street1" />
+          <ScalarProperty Name="Street2" ColumnName="Street2" />
+          <ScalarProperty Name="Street3" ColumnName="Street3" />
+          <ScalarProperty Name="Suburb" ColumnName="Suburb" />
+          <ScalarProperty Name="StateID" ColumnName="StateID" />
+          <ScalarProperty Name="Postcode" ColumnName="Postcode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Agencies">
+      <EntityTypeMapping TypeName="IsTypeOf(TimeTrackerModel.Agencies)">
+        <MappingFragment StoreEntitySet="Agencies">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Companies">
+      <EntityTypeMapping TypeName="IsTypeOf(TimeTrackerModel.Companies)">
+        <MappingFragment StoreEntitySet="Companies">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Consultants">
+      <EntityTypeMapping TypeName="IsTypeOf(TimeTrackerModel.Consultants)">
+        <MappingFragment StoreEntitySet="Consultants">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="AgenciesId" ColumnName="AgenciesId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Engagements">
+      <EntityTypeMapping TypeName="IsTypeOf(TimeTrackerModel.Engagements)">
+        <MappingFragment StoreEntitySet="Engagements">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Commencement" ColumnName="Commencement" />
+          <ScalarProperty Name="Completion" ColumnName="Completion" />
+          <ScalarProperty Name="AgenciesId" ColumnName="AgenciesId" />
+          <ScalarProperty Name="ConsultantsId" ColumnName="ConsultantsId" />
+          <ScalarProperty Name="CompaniesId" ColumnName="CompaniesId" />
+          <ScalarProperty Name="AddressesId" ColumnName="AddressesId" />
+          <ScalarProperty Name="PeopleId" ColumnName="PeopleId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="People">
+      <EntityTypeMapping TypeName="IsTypeOf(TimeTrackerModel.People)">
+        <MappingFragment StoreEntitySet="People">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="CompaniesId" ColumnName="CompaniesId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Projects">
+      <EntityTypeMapping TypeName="IsTypeOf(TimeTrackerModel.Projects)">
+        <MappingFragment StoreEntitySet="Projects">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="PeopleId" ColumnName="PeopleId" />
+          <ScalarProperty Name="EngagementsId" ColumnName="EngagementsId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tasks">
+      <EntityTypeMapping TypeName="IsTypeOf(TimeTrackerModel.Tasks)">
+        <MappingFragment StoreEntitySet="Tasks">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="ProjectsId" ColumnName="ProjectsId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Logs">
+      <EntityTypeMapping TypeName="IsTypeOf(TimeTrackerModel.Log)">
+        <MappingFragment StoreEntitySet="Logs">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="LogDate" ColumnName="LogDate" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="TasksId" ColumnName="TasksId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="AddressesAgencies" TypeName="TimeTrackerModel.AddressesAgencies" StoreEntitySet="Agencies">
+      <EndProperty Name="Addresses">
+        <ScalarProperty Name="Id" ColumnName="Address_Id" />
+      </EndProperty>
+      <EndProperty Name="Agencies">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+      <Condition ColumnName="Address_Id" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="AddressesCompanies" TypeName="TimeTrackerModel.AddressesCompanies" StoreEntitySet="Companies">
+      <EndProperty Name="Addresses">
+        <ScalarProperty Name="Id" ColumnName="Address_Id" />
+      </EndProperty>
+      <EndProperty Name="Companies">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+      <Condition ColumnName="Address_Id" IsNull="false" />
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
